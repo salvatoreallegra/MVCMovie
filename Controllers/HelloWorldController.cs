@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using System.Text.Encodings.Web;
 
 namespace MVCMovie.Controllers
 {
@@ -8,9 +9,9 @@ namespace MVCMovie.Controllers
         {
             return "This is the default Action, /HelloWorld";
         }
-        public string Welcome()
+        public string Welcome(string name, int numTimes = 1)
         {
-            return "This is the Welcome Action Method";
+            return HtmlEncoder.Default.Encode($"Hello {name}, NumTimes is: {numTimes}");
         }
     }
 }
